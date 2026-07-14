@@ -1,0 +1,8 @@
+config.json
+*.docx
+!templates/*.docx
+sponsors.csv
+jd/
+*.html
+__pycache__/
+.DS_Store

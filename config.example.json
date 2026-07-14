@@ -1,0 +1,42 @@
+{
+  "candidate": {
+    "cv_path": "~/Documents/my-cv.docx",
+    "bullet_bank": "~/Documents/master_bullets_xyz.md",
+    "cv_template": "~/Documents/my-cv.docx",
+    "portfolio": "https://example.com",
+    "github": "https://github.com/yourname"
+  },
+
+  "targets": {
+    "titles": ["Product Marketing Executive", "Marketing Executive", "Demand Generation Executive"],
+    "locations": ["London, England, United Kingdom"],
+    "posted_within": "r604800",
+    "experience_levels": [1, 2, 3],
+    "salary_band": { "min": 40000, "max": 55000, "currency": "GBP" }
+  },
+
+  "hard_disqualifiers": [
+    "agency posting for an unnamed client",
+    "years-of-experience bar 2+ above the candidate",
+    "sales or business development wearing a marketing title",
+    "wrong sector",
+    "cannot sponsor (when sponsorship is required)"
+  ],
+
+  "visa": {
+    "enabled": true,
+    "country": "UK",
+    "current_status": "Graduate Route (post-study work)",
+    "expires": "2028-07-01",
+    "route_required_later": "Skilled Worker",
+    "salary_floor": 33400,
+    "salary_floor_note": "UK new-entrant Skilled Worker rate as of July 2026. General threshold is GBP 41,700. CHECK CURRENT FIGURES — these change.",
+    "register_url": "https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers",
+    "invalid_routes": ["Global Business Mobility"]
+  },
+
+  "output": {
+    "folder": "~/Desktop/Job Applications",
+    "documents": ["CV", "Cover Letter", "Value Prop"]
+  }
+}
