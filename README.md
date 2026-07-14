@@ -34,6 +34,7 @@ sponsor your visa. **Fit alone is not a ranking.**
 | `linkedin-endpoints.md` | LinkedIn's public, unauthenticated job endpoints — params, pacing, selectors. |
 | `comp-and-legitimacy.md` | Two judgment checks: is the salary real, and is the posting real. |
 | `build_cv.py` | Generates `.docx` files by **cloning your existing CV's formatting**. |
+| `sponsor_check.py` | UK visa check: route, A/B rating, salary floor, and JD-level overrides. |
 | `config.example.json` | Everything personal lives here. Nothing is hardcoded. |
 
 ---
@@ -53,13 +54,30 @@ The two traps below are the part I haven't seen handled elsewhere.)*
 transferring existing overseas staff into the UK — it cannot be used to hire you locally, and it
 does not lead to settlement. A company can appear on the register and still be a dead end.
 
-**The second trap:** a licensed employer paying below the visa's salary floor still cannot sponsor
-you. Both conditions must hold.
+**The second trap:** a **B-rated** sponsor cannot issue *new* Certificates of Sponsorship. A licence
+they can't use is no licence at all — and the register prints the rating right next to the route.
 
-**And a warning:** match on **exact normalised legal-entity names only**. The register lists legal
-entities; job boards show brand names. Substring matching produces nonsense — it will cheerfully
-match a supermarket to an unrelated consultancy with a similar name. A miss means *verify manually*,
-not *cannot sponsor*.
+**The third trap:** a licensed, A-rated employer paying below the visa's salary floor still cannot
+sponsor you. All of it has to hold at once.
+
+**The fourth, which beats all of the above:** the job description itself may say *"we cannot offer
+sponsorship for this role."* A negative phrase in the posting overrides anything the register says.
+Check it first — it's free.
+
+**And the warning that matters most: never auto-assert a non-exact match.** The register lists legal
+entities; job boards show brands. Every shortcut around this produces confident lies:
+
+| Shortcut | What it produced |
+|---|---|
+| substring | `Tesco` → `ATESCO CONSULTANCY LTD` |
+| trigram (Sponsor-Radar's) | `Encord` → `Encortec Limited` |
+| prefix | `IRIS Software Group` → `iRiS Software Systems Ltd` — a **different company**, scoring **1.00** |
+
+`sponsor_check.py` treats **only an exact normalised match** as verification. Everything else is
+*proposed* with a score and an explicit "this is not verification" warning, for a human to confirm.
+
+A false *"they can sponsor you"* costs someone years. A missed match costs one email. Optimise for
+the second error, never the first.
 
 ### 2. Rank on fit × sponsorship × (low) competition
 
