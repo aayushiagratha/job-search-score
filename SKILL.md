@@ -165,6 +165,20 @@ concrete method. Draw only from the bullet bank in config. **Never invent a metr
 If the CV format has no "core competencies" block, load each JD's real vocabulary into the SKILLS
 lines instead. That is what moves an ATS score without bolting a foreign block onto a good CV.
 
+### Voice check — run on every generated document, before saying it's done
+
+AI slop is what separates offers from rejections (a hiring manager who can tell the writing is the
+candidate's own thinking, not vibe-coded, is the difference). Two passes:
+
+1. **Mechanical — runnable.** `python3 voice_check.py <file.docx>`. Flags em-dash density (the #1
+   tell), banned slop phrases, AI sentence shapes, and punctuation collisions. It *reports*, it does
+   not auto-fix — a real word in context beats a false positive. Clear the HIGH and SLOP flags.
+   Not optional; it catches tells in documents that look fine by eye.
+2. **Voice — judgment.** Read the document against `voice-dna.md` (copy it from `voice-dna.example.md`
+   and fill in how the candidate actually sounds). List conflicts major/minor; fix the majors.
+
+Only after both passes is a document done.
+
 ### Per document
 
 - **CV** — reorder and reweight real, verified experience to match this JD's language. Never invent

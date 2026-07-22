@@ -35,6 +35,8 @@ sponsor your visa. **Fit alone is not a ranking.**
 | `comp-and-legitimacy.md` | Two judgment checks: is the salary real, and is the posting real. |
 | `build_cv.py` | Generates `.docx` files by **cloning your existing CV's formatting**. |
 | `sponsor_check.py` | UK visa check: route, A/B rating, salary floor, and JD-level overrides. |
+| `voice_check.py` | Flags AI-slop tells (em-dash density, banned phrases, punctuation collisions) in a generated CV/letter. |
+| `voice-dna.example.md` | Template for capturing *your* voice — the judgment pass the linter can't do. |
 | `config.example.json` | Everything personal lives here. Nothing is hardcoded. |
 
 ---
@@ -101,6 +103,20 @@ Two things this saves you from:
   the document. If you've ever had a CV come out looking like a draft, that's why.
 - Every bullet comes from a **verified bullet bank** in X-Y-Z form (*accomplished X, as measured by
   Y, by doing Z*). Never invent a metric. If it isn't in the bank, it doesn't go in.
+
+### 4. Catch the AI slop before a human does
+
+`voice_check.py <file.docx>` reports the mechanical tells that make writing read as AI-generated:
+em-dash density (the #1 signal — it once hit 14–18 per document), banned slop phrases
+("leverage", "passionate about", "seamlessly"…), AI sentence shapes ("not just X but Y"), and
+punctuation collisions. It **reports, it doesn't auto-fix** — a real word in context beats a false
+deletion, so a human makes the call. (Same principle as "report the page count as a fact, don't
+tune it.")
+
+What a regex can't judge is whether it sounds like *you*. That's the second pass: copy
+`voice-dna.example.md` to `voice-dna.md`, write down how you actually sound, and check the document
+against it. The goal is writing a hiring manager reads as your own thinking, not vibe-coded — which
+is the thing that separates the offers from the rejections.
 
 ---
 

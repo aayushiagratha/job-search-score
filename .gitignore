@@ -6,3 +6,4 @@ jd/
 *.html
 __pycache__/
 .DS_Store
+voice-dna.md
