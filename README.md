@@ -66,6 +66,14 @@ sponsor you. All of it has to hold at once.
 sponsorship for this role."* A negative phrase in the posting overrides anything the register says.
 Check it first — it's free.
 
+**Scale-up is a separate route, off by default.** The register also lists a **Scale-up** licence,
+distinct from Skilled Worker: you self-sponsor by joining an endorsed fast-growing company, there's
+no new-entrant salary discount, and after 6 months you can work for *any* UK employer without further
+sponsorship — it just doesn't lead to settlement the way Skilled Worker does. `sponsor_check.py`
+ignores it unless you pass `--include-scaleup` (or `include_scaleup=True`), so an employer holding
+only a Scale-up licence won't be silently reported as unsponsored without you knowing that route
+exists.
+
 **And the warning that matters most: never auto-assert a non-exact match.** The register lists legal
 entities; job boards show brands. Every shortcut around this produces confident lies:
 

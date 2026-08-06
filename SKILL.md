@@ -96,6 +96,12 @@ If the candidate needs sponsorship now or in future, this gate runs **before** f
   manually", not "cannot sponsor".
 - **Check the salary too.** A licensed employer offering below the visa's salary floor still cannot
   sponsor. Both conditions must hold. Put the current thresholds in config — they change.
+- **Scale-up is a separate, opt-in route.** The register also lists a **Scale-up** licence, which
+  works differently from Skilled Worker (self-sponsored, single salary floor with no new-entrant
+  discount, converts to unsponsored work after 6 months, doesn't itself lead to settlement).
+  `sponsor_check.py` ignores it by default — pass `--include-scaleup` (or set
+  `config.visa.include_scaleup_route: true`) if that route is viable for the candidate, otherwise a
+  Scale-up-only employer silently reports as unsponsored.
 
 ## Step 4: Score against the real CV
 

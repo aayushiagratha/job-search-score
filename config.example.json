@@ -32,7 +32,9 @@
     "salary_floor": 33400,
     "salary_floor_note": "UK new-entrant Skilled Worker rate as of July 2026. General threshold is GBP 41,700. CHECK CURRENT FIGURES — these change.",
     "register_url": "https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers",
-    "invalid_routes": ["Global Business Mobility"]
+    "invalid_routes": ["Global Business Mobility"],
+    "include_scaleup_route": false,
+    "scaleup_note": "Set true if the Scale-up route is viable for you: self-sponsored, single salary floor (no new-entrant discount), converts to unsponsored work after 6 months, doesn't itself lead to settlement. Off by default — passes --include-scaleup to sponsor_check.py when true."
   },
 
   "output": {
