@@ -58,8 +58,9 @@ SALARY_FLOOR_NEW_ENTRANT = 33_400   # new entrant (incl. switching from Graduate
 SALARY_FLOOR_GENERAL     = 41_700   # general threshold
 
 # UK Scale-up Worker salary floor — CHECK THIS, IT CHANGES. No new-entrant discount.
-# https://www.gov.uk/scale-up-worker-visa/eligibility
-SALARY_FLOOR_SCALEUP = 34_600
+# £39,100/yr (or the going rate for the occupation, whichever is higher) for CoS
+# assigned on/after 22 Jul 2025. https://www.gov.uk/scale-up-worker-visa/eligibility
+SALARY_FLOOR_SCALEUP = 39_100
 
 # A job description saying this beats anything the register says.
 NEGATIVE_PHRASES = [
