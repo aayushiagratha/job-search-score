@@ -34,12 +34,6 @@ from xml.sax.saxutils import escape
 TEMPLATE = os.path.expanduser(
     os.environ.get("CV_TEMPLATE", "~/Documents/my-cv.docx")
 )
-if not os.path.exists(TEMPLATE):
-    sys.exit(
-        f"CV template not found: {TEMPLATE}\n"
-        "Set CV_TEMPLATE to an existing .docx whose formatting you want to reuse:\n"
-        "  CV_TEMPLATE=~/Documents/my-cv.docx python3 build_cv.py content.json out.docx"
-    )
 
 NAVY, SLATE, BODY = "1A1A2E", "4A4A6A", "2D2D2D"
 TAB = 9026  # right-aligned tab stop: dates flush to right margin
@@ -111,7 +105,13 @@ def table(cols, rows, total=9026):
     x.append('</w:tbl><w:p><w:pPr><w:spacing w:after="60"/></w:pPr></w:p>')
     return ''.join(x)
 
-def build(c, template=TEMPLATE):
+def build(c, template=TEMPLATE, out=None):
+    if not os.path.exists(template):
+        sys.exit(
+            f"CV template not found: {template}\n"
+            "Set CV_TEMPLATE to an existing .docx whose formatting you want to reuse:\n"
+            "  CV_TEMPLATE=~/Documents/my-cv.docx python3 build_cv.py content.json out.docx"
+        )
     with zipfile.ZipFile(template) as z:
         doc = z.read('word/document.xml').decode('utf-8')
     # reuse the template's own bullet list id so numbering.xml stays valid
@@ -154,7 +154,8 @@ def build(c, template=TEMPLATE):
            '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
            '<w:body>' + ''.join(body) + sect + '</w:body></w:document>')
 
-    out = sys.argv[2]
+    if out is None:
+        out = sys.argv[2]
     shutil.copy(template, out)
     # rewrite document.xml inside the copied package
     tmp = out + '.tmp'
